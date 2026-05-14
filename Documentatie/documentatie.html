@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentație Tehnică - Proiect Admitere Facultate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Consolas:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --primary: #0f172a;
+            --secondary: #2563eb;
+            --accent: #059669;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+            --code-text: #f8fafc;
+            --sidebar-width: 320px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* Sidebar Nav */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary);
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            overflow-y: auto;
+            padding: 2rem 0;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 2rem 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul { list-style: none; }
+        .sidebar a {
+            display: block;
+            padding: 0.75rem 2rem;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-left: 4px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .sidebar a:hover {
+            background-color: rgba(255,255,255,0.05);
+            color: #fff;
+            border-left-color: var(--secondary);
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            width: calc(100% - var(--sidebar-width));
+            max-width: 1400px;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.25rem; color: var(--primary); margin-bottom: 1.5rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; color: var(--secondary); margin: 3rem 0 1.5rem 0; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+        h3 { font-size: 1.2rem; color: var(--primary); margin: 2rem 0 1rem 0; font-weight: 600; }
+        p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+        ul { margin-bottom: 1.5rem; padding-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        strong { color: var(--primary); }
+
+        /* Sections / Cards */
+        section {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid var(--secondary);
+        }
+        code { font-family: 'Consolas', monospace; }
+        .kw { color: #569cd6; } /* keyword */
+        .ty { color: #4ec9b0; } /* type */
+        .st { color: #ce9178; } /* string */
+        .cm { color: #6a9955; font-style: italic; } /* comment */
+
+        /* Screenshot Placeholder */
+        .screenshot-placeholder {
+            background-color: #f1f5f9;
+            border: 2px dashed #94a3b8;
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #475569;
+            font-weight: 600;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        .screenshot-placeholder::before {
+            content: "📸";
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .screenshot-placeholder:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <h2>Documentație</h2>
+        <ul>
+            <li><a href="#introducere">1. Introducere</a></li>
+            <li><a href="#modelare">2. Modelarea Aplicației</a></li>
+            <li><a href="#interfata">3. Interfață Grafică</a></li>
+            <li><a href="#validare">4. Validare și Fișiere</a></li>
+            <li><a href="#meniuri">5. Meniuri</a></li>
+            <li><a href="#grafica">6. Reprezentare Grafică</a></li>
+            <li><a href="#imprimare">7. Imprimare</a></li>
+            <li><a href="#baza-date">8. Bază de Date</a></li>
+            <li><a href="#data-binding">9. Data Binding</a></li>
+            <li><a href="#xml">10. Utilizarea XML</a></li>
+            <li><a href="#analiza">11. Analiză Finală</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <!-- 1. INTRODUCERE -->
+        <section id="introducere">
+            <h1>1. Introducere</h1>
+            <p>Aplicația reprezintă un sistem informatic desktop dezvoltat în C# WinForms, destinat gestionării procesului de admitere la nivel universitar. Scopul proiectului este de a digitaliza și automatiza stocarea datelor candidaților, calculul mediilor de admitere pe baza ponderilor și generarea de statistici/rapoarte.</p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="fereastraprincipala.png" alt="Fereastra principală" style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.5rem; font-style: italic;"></p>
+            </div>
+
+            <p><strong>Funcționalități implementate pe baza codului sursă:</strong></p>
+            <ul>
+                <li>Adăugarea, modificarea și ștergerea (CRUD) candidaților.</li>
+                <li>Calculul automat al mediei finale pe baza notei de BAC și a notei de Admitere, fiecare având ponderi configurabile.</li>
+                <li>Gestiunea unui nomenclator de facultăți cu o capacitate limitată de locuri.</li>
+                <li>Persistența datelor într-o bază de date SQLite (<code>admitere.db</code>) și operațiuni de import/export în formate TXT, Binar (.dat) și XML.</li>
+                <li>Generarea unui grafic vectorial (GDI+) pentru distribuția pe facultăți.</li>
+                <li>Funcționalitate de imprimare paginată a listei de candidați.</li>
+            </ul>
+        </section>
+
+        <!-- 2. MODELAREA APLICAȚIEI PRIN CLASE -->
+        <section id="modelare">
+            <h1>2. Modelarea Aplicației prin Clase</h1>
+
+            <h3>2.1 Clasele domeniului</h3>
+            <p>Sistemul a fost modelat utilizând următoarele clase specifice domeniului, evidențiind moștenirea și implementarea de interfețe:</p>
+<pre><code><span class="kw">public abstract class</span> <span class="ty">Persoana</span>
+{ ... }
+
+<span class="kw">public class</span> <span class="ty">Candidat</span> : <span class="ty">Persoana</span>, <span class="ty">ICloneable</span>, <span class="ty">IComparable</span>, <span class="ty">IExportabil</span>
+{ ... }</code></pre>
+            <ul>
+                <li><strong><code>Persoana</code>:</strong> Clasă abstractă. Stochează atributele demografice (nume, prenume, sex, CNP, data nașterii, domiciliu) și definește semnătura metodei <code>ObtineStatusAdmitere()</code>.</li>
+                <li><strong><code>Candidat</code>:</strong> Moștenește clasa <code>Persoana</code> și implementează interfețele <code>ICloneable</code>, <code>IComparable</code>, <code>IExportabil</code>. Reține asocieri către facultatea aleasă și un obiect de tip <code>Medii</code>.</li>
+                <li><strong><code>Medii</code>:</strong> Clasă care implementează <code>ICloneable</code> și <code>IComparable</code>. Încapsulează mediile de BAC, nota de admitere și ponderile lor, plus funcția de calcul a mediei finale.</li>
+                <li><strong><code>Facultate</code>:</strong> Modelează o facultate prin <code>denumire</code>, <code>nrLocuri</code> și menține o colecție de referințe către candidați (<code>List&lt;Candidat&gt; candidati</code>).</li>
+                <li><strong><code>DatabaseManager</code>:</strong> Clasă care conține string-ul de conexiune SQLite și funcțiile pentru interacțiunea cu tabelul <code>Candidati</code>.</li>
+            </ul>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="diagramaClase.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+
+            <h3>2.2 Constructori, proprietăți și încapsulare</h3>
+            <p>Încapsularea a fost implementată prin declararea câmpurilor ca fiind private (ex. <code>private string nume;</code>) și expunerea acestora exclusiv prin proprietăți publice. În interiorul blocurilor <code>set</code> s-a adăugat validarea datelor de intrare (Business Logic).</p>
+<pre><code><span class="kw">public string</span> Nume
+{
+            <span class="kw">get</span> { <span class="kw">return</span> nume; }
+            <span class="kw">set</span>
+    {
+            <span class="kw">if</span> (<span class="kw">string</span>.IsNullOrWhiteSpace(<span class="kw">value</span>))
+            <span class="kw">throw new</span> <span class="ty">Exception</span>(<span class="st">"Numele nu poate fi gol!"</span>);
+        nume = <span class="kw">value</span>;
+    }
+}</code></pre>
+
+            <h3>2.3 ICloneable și IComparable</h3>
+            <p>Aceste interfețe sunt implementate complet în cod. Iată exemplul din clasa <code>Candidat</code>:</p>
+<pre><code><span class="kw">public object</span> Clone()
+{
+            <span class="ty">Candidat</span> clona = <span class="kw">new</span> <span class="ty">Candidat</span>(Nume, Prenume, Sex, CNP, DataNasterii, Domiciliu,
+            <span class="kw">new</span> <span class="ty">Medii</span>(MediiExamen.MedieBac, MediiExamen.NotaAdmitere,
+                  MediiExamen.PondereBac, MediiExamen.PondereAdmitere), 
+        FacultateAleasa);
+            <span class="kw">return</span> clona;
+}</code></pre>
+            <ul>
+                <li><strong><code>ICloneable</code>:</strong> Implementată în <code>Candidat</code> și <code>Medii</code>. Metoda <code>Clone()</code> returnează o copie profundă a obiectului. Această logică este folosită pentru a edita temporar un candidat în <code>FormCandidat</code> fără a altera referința originală din memorie.</li>
+                <li><strong><code>IComparable</code>:</strong> Implementată în <code>Candidat</code>. Suprascrie metoda <code>CompareTo</code> și deleagă comparația către <code>MedieCalculata</code>. Este utilizată real în cod prin comanda <code>candidati.Sort()</code>.</li>
+            </ul>
+
+            <h3>2.4 Supraîncărcarea operatorilor</h3>
+            <p>În clasa <code>Candidat</code> au fost supraîncărcați trei operatori logici și aritmetici:</p>
+<pre><code><span class="kw">public static</span> <span class="ty">Candidat</span> <span class="kw">operator</span> +(<span class="ty">Candidat</span> c, <span class="kw">double</span> punctBonus)
+{
+    c.mediiExamen.NotaAdmitere += punctBonus;
+            <span class="kw">return</span> c;
+}
+
+<span class="kw">public static bool</span> <span class="kw">operator</span> >(<span class="ty">Candidat</span> c1, <span class="ty">Candidat</span> c2)
+{
+            <span class="kw">return</span> c1.MedieCalculata > c2.MedieCalculata;
+}</code></pre>
+            <p>Aceștia permit acordarea unui punctaj bonus (<code>+</code>) sau compararea clară a doi candidați pentru a afla cine are media mai mare (<code>&gt;</code> și <code>&lt;</code>).</p>
+
+            <h3>2.5 Indexator</h3>
+            <p>Un indexator de tip <code>double this[int index]</code> a fost implementat în clasa <code>Medii</code>. Utilizează o structură <code>switch</code> pentru a accesa direct atributele. Este folosit intern pentru formula de calcul:</p>
+<pre><code><span class="kw">public double</span> CalculeazaMedieFinala()
+{
+            <span class="kw">return</span> (<span class="kw">this</span>[0] * <span class="kw">this</span>[2]) + (<span class="kw">this</span>[1] * <span class="kw">this</span>[3]);
+}</code></pre>
+
+            <h3>2.6 Colecții și foreach</h3>
+            <p>Principalele colecții utilizate sunt <code>List&lt;Candidat&gt; candidati</code> și <code>List&lt;Facultate&gt; facultatiDisponibile</code>. Bucla <code>foreach</code> este implementată repetat pentru popularea <code>ListView</code>, scrierea în fișiere TXT, și calculul valorilor pentru grafic.</p>
+
+            <h3>2.7 Metode de prelucrare</h3>
+            <p>Pe baza logicii de domeniu, au fost create metode specifice de calcul și decizie:</p>
+<pre><code><span class="kw">public override string</span> ObtineStatusAdmitere()
+{
+            <span class="kw">return</span> MedieCalculata >= <span class="st">6.00</span> ? <span class="st">"Admis"</span> : <span class="st">"Respins"</span>;
+}</code></pre>
+
+            <h3>2.8 Interfață / clasă abstractă</h3>
+            <p>Clasa <code>Persoana</code> este definită explicit ca <code>abstract class</code>, conținând metoda abstractă <code>ObtineStatusAdmitere()</code>. De asemenea, s-a definit interfața personalizată <code>IExportabil</code>, care impune metoda <code>string Export()</code>, esențială pentru scrierea standardizată în fișierele text.</p>
+        </section>
+
+        <!-- 3. INTERFAȚĂ GRAFICĂ -->
+        <section id="interfata">
+            <h1>3. Interfață Grafică </h1>
+            <p>Pe baza codului implementat, interfața grafică este alcătuită din mai multe Form-uri WinForms specializate:</p>
+            <ul>
+                <li><strong><code>AdmitereFaculate</code> (Main Form):</strong> Conține controlul central <code>ListView (lvCandidati)</code> setat pe modul Details. Afișează candidații sub formă de tabel cu coloane (Nume, Medie, Status, etc.). Integrează un <code>ComboBox (cmbFac)</code> pentru filtrarea candidaților și un <code>Label</code> pentru afișarea numărului de înregistrări.</li>
+                <li><strong><code>FormCandidat</code>:</strong> Formular modal deschis pentru Adăugare sau Modificare. Conține controale <code>TextBox</code> (tbNume, tbCNP, tbMedieBac etc.), <code>ComboBox</code> (cmbSex, cmbFacultate) și <code>DateTimePicker</code> (dtpDataNasterii). Integrează componenta <code>ErrorProvider</code> pentru validare vizuală.</li>
+                <li><strong><code>FormFacultate</code>:</strong> Formular simplu pentru instanțierea unei noi facultăți, conținând <code>TextBox</code>-uri pentru Denumire și Număr de locuri.</li>
+            </ul>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="formCandidat.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 4. VALIDARE + FIȘIERE -->
+        <section id="validare">
+            <h1>4. Validarea Datelor și Fișiere</h1>
+
+            <h3>Validarea Datelor</h3>
+            <p>Validarea folosește componenta <strong>ErrorProvider</strong> în <code>FormCandidat</code>. Dacă un input nu respectă formatul (ex: Double.TryParse eșuează pentru notă sau CNP-ul nu are 13 cifre), metoda de salvare setează mesajul de eroare alături de controlul afectat:</p>
+<pre><code><span class="kw">if</span> (tbCNP.Text.Length != <span class="st">13</span> || !tbCNP.Text.All(<span class="kw">char</span>.IsDigit))
+{
+    errorProvider1.SetError(tbCNP, <span class="st">"CNP trebuie sa aiba 13 cifre!"</span>);
+    valid = <span class="kw">false</span>;
+}</code></pre>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="candidaterr.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+
+            <h3>Salvare și Restaurare TXT</h3>
+            <p>Implementată folosind <code>StreamWriter</code> și <code>StreamReader</code>. Fiecare obiect <code>Candidat</code> este transformat în string prin apelul metodei <code>Export()</code> (dictată de interfața IExportabil):</p>
+<pre><code><span class="kw">public string</span> Export()
+{
+            <span class="kw">return</span> <span class="st">$"{Nume}|{Prenume}|{Sex}|{CNP}|{DataNasterii:yyyy-MM-dd}|{Domiciliu}|{MediiExamen.MedieBac}|{MediiExamen.NotaAdmitere}|{MediiExamen.PondereBac}|{MediiExamen.PondereAdmitere}|{FacultateAleasa}"</span>;
+}</code></pre>
+
+            <h3>Salvare și Restaurare Binară</h3>
+            <p>Implementată prin clasa <code>BinaryFormatter</code> și <code>FileStream</code> (extensia .dat). Aceasta transferă structura completă a obiectului <code>List&lt;Candidat&gt;</code> din memorie către fișier, motiv pentru care toate clasele domeniului sunt precedate de atributul <code>[Serializable]</code>.</p>
+        </section>
+
+        <!-- 5. MENIURI -->
+        <section id="meniuri">
+            <h1>5. Meniuri </h1>
+            <p>Aplicația dispune de ambele tipuri de meniuri Windows Forms:</p>
+            <ul>
+                <li><strong>Meniu Principal (MenuStrip):</strong> Organizat în categorii. Găzduiește opțiunile de I/O (Export/Import XML, Binar, TXT), opțiuni de printare, gestiune de candidați (Adăugare, Modificare, Ștergere), și instrumente de vizualizare (Sortare după Medie, Afișare grafic, Evidențiere Status).</li>
+                <li><strong>Meniu Contextual (ContextMenuStrip):</strong> Conectat direct la <code>lvCandidati</code>. Accesibil prin click-dreapta pe un rând din listă, expune acțiunile <code>Modifică</code>, <code>Șterge</code> și <code>Evidențiere Status</code> (ce parcurge lista și colorează rândul cu <code>Color.DarkGreen</code> pentru Admis și <code>Color.Red</code> pentru Respins).</li>
+            </ul>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="menu.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 6. REPREZENTARE GRAFICĂ -->
+        <section id="grafica">
+            <h1>6. Reprezentare Grafică</h1>
+            <p>Implementată în clasa <code>FormGrafic</code>, aplicația utilizează librăria <strong>GDI+</strong> nativă din <code>System.Drawing</code> pentru a desena un <strong>grafic cu bare (Bar Chart)</strong> în evenimentul <code>panelGrafic_Paint</code>.</p>
+            <p>Algoritmul extrage numărul de candidați per facultate, stabilește o lățime bazată pe lățimea ferestrei și o înălțime scalată dinamic folosind variabila <code>vScale</code>:</p>
+<pre><code><span class="kw">float</span> vScale = (<span class="kw">float</span>)(zonaDesen.Height - <span class="st">2</span> * margina) / (maxCandidati + <span class="st">0.5f</span>);
+<span class="kw">int</span> inaltimeBara = (<span class="kw">int</span>)(pereche.Value * vScale);
+
+<span class="cm">// Desenare dreptunghi plin</span>
+g.FillRectangle(pensulaBare, xBara, yBara, latimeBara, inaltimeBara);</code></pre>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="grafic.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 7. IMPRIMARE -->
+        <section id="imprimare">
+            <h1>7. Imprimare</h1>
+            <p>Imprimarea fizică este integrată prin controalele <code>PrintDocument</code> și <code>PrintPreviewDialog</code>. Datele (Nume, Facultate, Medie, Status) sunt desenate cu <code>Graphics.DrawString</code>.</p>
+            <p><strong>Logica de Paginare:</strong> Evenimentul <code>PrintPage</code> evaluează poziția verticală <code>yCurent</code>. Dacă depășește limita inferioară (Bottom Margin), execuția pe foaia curentă este suspendată prin <code>e.HasMorePages = true</code>. Motorul Windows generează o foaie nouă și reia scrierea pe baza variabilei de offset <code>candidatCurentIndice</code>.</p>
+<pre><code><span class="cm">// Verificam daca mai avem loc pe pagina curenta</span>
+<span class="kw">if</span> (yCurent + <span class="st">25</span> > e.MarginBounds.Bottom)
+{
+    e.HasMorePages = <span class="kw">true</span>; <span class="cm">// Mai urmeaza o pagina</span>
+            <span class="kw">return</span>;
+}</code></pre>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="print.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 8. BAZĂ DE DATE -->
+        <section id="baza-date">
+            <h1>8. Bază de Date</h1>
+            <p>Sistemul folosește baza de date relațională <strong>SQLite</strong>. Clasa responsabilă este <code>DatabaseManager</code>. La inițializare se execută comanda DDL <code>CREATE TABLE IF NOT EXISTS Candidati</code>. S-a asigurat constrângerea de integritate <code>CNP TEXT UNIQUE</code>.</p>
+            <p><strong>Operații CRUD Implementate cu Parametri:</strong></p>
+<pre><code><span class="kw">string</span> sql = <span class="st">"INSERT INTO Candidati (Nume, Prenume, CNP, Facultate, MedieBac, NotaAdmitere, PondereBac, PondereAdmitere, MedieFinala) VALUES (@n, @p, @cnp, @f, @mb, @na, @pb, @pa, @mf)"</span>;
+<span class="kw">using</span> (<span class="kw">var</span> cmd = <span class="kw">new</span> <span class="ty">SQLiteCommand</span>(sql, conn))
+{
+    cmd.Parameters.AddWithValue(<span class="st">"@n"</span>, c.Nume);
+            <span class="cm">// ... restul parametrilor</span>
+    cmd.ExecuteNonQuery();
+}</code></pre>
+            <p>Securizarea operațiilor de Inserare și Update (Modificare) utilizează comenzi parametrizate (<code>@n</code>, <code>@cnp</code>), prevenind eficient vulnerabilitățile de tip SQL Injection. Ștergerea se bazează pe CNP (<code>DELETE FROM Candidati WHERE CNP = @cnp</code>).</p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="admiteredb.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 9. CONTROL REUTILIZABIL / DATA BINDING -->
+        <section id="data-binding">
+            <h1>9. Control Reutilizabil / Data Binding</h1>
+            <p><strong>Control Reutilizabil:</strong> Formularul <code>FormCandidat</code> este complet reutilizabil. Parametrul primit în constructor, <code>enum ModForm { Adaugare, Modificare }</code> dictează dacă formularul se deschide gol pentru date noi sau populat pentru editarea unui candidat existent, optimizând codul sursă (DRY).</p>
+            <p><strong>Data Binding Reactiv:</strong> În metoda <code>ConfigurareBindingCandidat</code> a fost legată sursa de date (câmpurile <code>Candidat</code>) la <code>TextBox</code>-uri folosind <code>DataSourceUpdateMode.OnValidation</code>.</p>
+<pre><code><span class="kw">Binding</span> bNume = <span class="kw">new</span> <span class="ty">Binding</span>(<span class="st">"Text"</span>, c, <span class="st">"Nume"</span>, <span class="kw">true</span>, <span class="ty">DataSourceUpdateMode</span>.OnValidation);
+bNume.BindingComplete += (sender, e) =>
+{
+            <span class="kw">if</span> (e.BindingCompleteState != <span class="ty">BindingCompleteState</span>.Success)
+        errorProvider1.SetError(tbNume, e.ErrorText); <span class="cm">// Afișează iconița roșie trimisă de logica din clasa Candidat</span>
+};</code></pre>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="dataBinding.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 10. XML -->
+        <section id="xml">
+            <h1>10. XML </h1>
+            <p>S-a implementat exportul și importul utilizând clasa nativă <code>XmlSerializer</code> specializată pe tipul colecției: <code>typeof(List&lt;Candidat&gt;)</code>.</p>
+            <p>Exportul transformă instanțele din memorie în elemente <code>XML</code> ierarhice (inclusiv obiectul compozit <code>Medii</code> aflat în clasa <code>Candidat</code>). La importul din XML (<code>Deserialize</code>), aplicația curăță lista și baza de date curentă pentru a preveni duplicatele, reinserază datele recuperate și populează automat dicționarul de <code>facultatiDisponibile</code> dacă fișierul conținea facultăți noi.</p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="xml.png"
+                     style="max-width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <!-- 11.Analiza -->
+        <section id="analiza">
+            <h1>11. Analiză Finală</h1>
+            <p>Proiectul demonstrează utilizarea avansată a principiilor OOP și ale platformei .NET WinForms. S-a realizat cu succes separarea logicii aplicației de interfața grafică, validarea robustă prin Data Binding reactiv cu ErrorProvider și persistența datelor prin multiple metode (SQL, Binar, XML, TXT).</p>
+
+            <h3>Puncte forte</h3>
+            <ul>
+                <li><strong>Integritatea datelor:</strong> Combinarea excepțiilor din Domain Model cu evenimentul <code>BindingComplete</code> și constrângerile <code>UNIQUE</code> din baza de date asigură un flux de date curat.</li>
+                <li><strong>Flexibilitate I/O:</strong> Suportul pentru formate multiple de fișiere permite portabilitatea datelor în diverse medii de lucru.</li>
+                <li><strong>Prezentare profesională:</strong> Paginarea corectă la printare și generarea de grafice independente prin GDI+ oferă o experiență completă utilizatorului final.</li>
+            </ul>
+
+            <h3>Limitări</h3>
+            <ul>
+                <li><strong>Execuție Sincronă:</strong> Operațiunile asupra bazei de date se execută sincron pe thread-ul UI, ceea ce poate cauza scurte blocaje vizuale la volume mari de date.</li>
+                <li><strong>Persistență Volatilă:</strong> Capacitatea totală (numărul de locuri) se stochează momentan doar în memorie, în colecția <code>facultatiDisponibile</code>, resetându-se la valorile implicite la fiecare restart al aplicației.</li>
+            </ul>
+
+            <h2 style="border: none; margin-top: 2rem;">Îmbunătățiri posibile</h2>
+
+            <div style="margin-left: 20px; padding: 15px; background-color: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+
+                <h4 style="color: #2563eb; margin-bottom: 10px;">1. Securitate și Etică (Sistem de Autentificare)</h4>
+                <ul style="list-style-type: square; margin-left: 40px; margin-bottom: 20px;">
+                    <li><strong>Implementarea unui modul de Login:</strong> O îmbunătățire critică ar fi adăugarea unei ferestre de autentificare pentru a restricționa accesul la aplicație.</li>
+                    <li><strong>Protecția datelor cu caracter personal:</strong> Din punct de vedere <strong>etic</strong>, accesul la informații sensibile (precum <em>CNP-ul</em> candidaților) trebuie limitat strict la personalul autorizat din comisia de admitere, prevenind astfel scurgerile de informații și utilizarea lor neautorizată.</li>
+                    <li><strong>Criptarea datelor:</strong> Stocarea parolelor în baza de date folosind algoritmi de hashing pentru a asigura confidențialitatea utilizatorilor.</li>
+                </ul>
+
+                <h4 style="color: #2563eb; margin-bottom: 10px;">2. Optimizarea Performanței (Asincronicitate)</h4>
+                <ul style="list-style-type: square; margin-left: 40px; margin-bottom: 20px;">
+                    <li><strong>Conceptul Async/Await:</strong> Introducerea procesării asincrone pentru toate procedurile de tip I/O (lucrul cu baza de date SQL, citirea/scrierea fișierelor binar, XML sau TXT).</li>
+                    <li><strong>Fluiditatea interfeței:</strong> Această modificare ar permite interfeței grafice să rămână responsivă (să nu se blocheze) în timpul procesării unor volume mari de date.</li>
+                </ul>
+
+                <h4 style="color: #2563eb; margin-bottom: 10px;">3. Arhitectura Bazei de Date (Normalizare)</h4>
+                <ul style="list-style-type: square; margin-left: 40px;">
+                    <li><strong>Persistența Nomenclatoarelor:</strong> Implementarea unui tabel separat numit <code>Facultati</code> în baza de date.</li>
+                    <li><strong>Integritate Relațională:</strong> Legarea tabelului de candidați cu cel de facultăți prin intermediul unei <strong>Foreign Key</strong> (Cheie Externă). Acest lucru ar permite salvarea permanentă a numărului de locuri, eliminând resetarea acestora la valorile implicite după restart.</li>
+                </ul>
+
+            </div>
+
+            
+        </section>
+
+    </main>
+</body>
+</html>
