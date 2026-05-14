@@ -1,7 +1,7 @@
 # Proiect Admitere Facultate
 
 ## 📖 Descriere
-Acest proiect este un sistem informatic desktop dezvoltat în **C# WinForms**, conceput pentru a gestiona procesul de admitere la nivel universitar. Aplicația facilitează digitalizarea stocării datelor, automatizează calculul mediilor pe baza ponderilor și oferă instrumente integrate pentru generarea de statistici și rapoarte.
+Acest proiect este dezvoltat în **C# WinForms**, conceput pentru a gestiona procesul de admitere la nivel universitar. Aplicația facilitează digitalizarea stocării datelor, automatizează calculul mediilor pe baza ponderilor și oferă instrumente integrate pentru generarea de statistici și rapoarte.
 
 ## ✨ Funcționalități Principale
 * **Gestiune Candidați (CRUD):** Adăugarea, modificarea, vizualizarea și ștergerea candidaților.
