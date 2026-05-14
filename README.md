@@ -1,41 +1,30 @@
-# 🎓 Sistem Gestiune Admitere Facultate
+# Proiect Admitere Facultate
 
-> O aplicație desktop robustă dezvoltată în **C# .NET WinForms**, proiectată pentru automatizarea și digitalizarea completă a procesului de admitere universitară. 
-
-Sistemul oferă un flux complet pentru gestiunea candidaților: de la înregistrarea și validarea datelor, calculul automat al mediilor ponderate, până la persistența sigură a datelor în baze de date SQL și generarea de rapoarte vizuale sau tipărite.
-
----
+## 📖 Descriere
+Acest proiect este un sistem informatic desktop dezvoltat în **C# WinForms**, conceput pentru a gestiona procesul de admitere la nivel universitar. Aplicația facilitează digitalizarea stocării datelor, automatizează calculul mediilor pe baza ponderilor și oferă instrumente integrate pentru generarea de statistici și rapoarte.
 
 ## ✨ Funcționalități Principale
+* **Gestiune Candidați (CRUD):** Adăugarea, modificarea, vizualizarea și ștergerea candidaților.
+* **Calcul Automatizat:** Determinarea mediei finale pe baza notelor de BAC și Admitere, utilizând ponderi configurabile.
+* **Gestiune Facultăți:** Administrarea unui nomenclator de facultăți cu o capacitate limitată de locuri.
+* **Import & Export Date:** Suport complet pentru persistența datelor în formate multiple: `.txt`, `.dat`, `.xml`.
+* **Reprezentare Grafică:** Generarea de grafice cu bare (vectorial, via GDI+) pentru a ilustra distribuția candidaților pe facultăți.
+* **Imprimare & Paginare:** Funcție de printare cu previzualizare și gestionare automată a paginării.
+* **Evidențiere Status:** Formatare condiționată în interfață (Admis/Respins) accesibilă prin meniu contextual.
 
-### 🏛️ Arhitectură și Logică de Domeniu (OOP)
-- **Modelare Avansată:** Utilizarea claselor abstracte (`Persoana`), moștenirii (`Candidat`) și a interfețelor standard .NET (`ICloneable`, `IComparable`).
-- **Calcul Dinamic:** Indexatori și supraîncărcarea operatorilor pentru calculul automat al mediilor finale bazate pe nota de la Bacalaureat, nota de Admitere și ponderile aferente.
-- **Polimorfism:** Decizii de business implementate polimorfic (ex: determinarea statusului *Admis/Respins* pe baza baremului).
+## 🛠️ Tehnologii și Concepte Utilizate
+* **Limbaj & Framework:** C#, .NET Windows Forms
+* **Bază de date:** SQLite
+* **Grafică:** GDI+ (`System.Drawing`)
+* **Serializare:** `XmlSerializer`, `BinaryFormatter`
+* **Concepte OOP Implementate:** Clase abstracte, moștenire, încapsulare (Business Logic), interfețe (`ICloneable`, `IComparable`, `IExportabil`), supraîncărcarea operatorilor, indexatori.
 
-### 💾 Persistență Hibridă a Datelor
-- **Bază de Date Locală (SQLite / SQL Server):** Integrare prin ADO.NET folosind interogări parametrizate pentru a preveni vulnerabilitățile de tip SQL Injection. Constrângeri `UNIQUE` pentru protejarea integrității CNP-urilor.
-- **Serializare Multi-Format:** - **XML:** Export/Import ierarhic folosind `XmlSerializer` pentru interoperabilitate.
-  - **Binar (.dat):** Salvarea stării exacte a memoriei prin `BinaryFormatter`.
-  - **Flat File (.txt):** Export delimitat prin caracterul `|`, optimizat pentru importul în aplicații tip Spreadsheet (Excel), bazat pe interfața custom `IExportabil`.
+## 🏛️ Arhitectură și Design
+* **Validare Date & Data Binding:** Legare reactivă a datelor (`DataSourceUpdateMode.OnValidation`) și afișare erori prin `ErrorProvider`.
+* **Formulare Reutilizabile:** Optimizare cod (DRY) pentru instanțierea dinamică a operațiunilor de Adăugare/Modificare.
+* **Securitate Bază de Date:** Operațiuni SQL executate exclusiv prin comenzi parametrizate.
 
-### 🛡️ Validare și User Experience (UX)
-- **Data Binding Reactiv:** Legarea bidirecțională a interfeței de obiectele din memorie (`DataSourceUpdateMode.OnValidation`).
-- **Feedback Vizual (ErrorProvider):** Erorile aruncate din *Business Logic* sunt interceptate automat și afișate elegant lângă controale, fără a bloca aplicația cu mesaje pop-up intruzive.
-- **Filtrare Dinamică:** `ComboBox` legat la colecția de facultăți pentru sortarea și afișarea instantanee a candidaților.
-
-### 📊 Raportare și Analitică
-- **Grafice GDI+ Nativ:** Generare dinamică de grafice tip *Bar Chart* pentru a vizualiza distribuția candidaților pe facultăți, cu scalare automată a axelor.
-- **Sistem de Printare Paginată:** Rapoarte tabelare oficiale, pregătite pentru imprimare, folosind `PrintDocument` cu logică complexă pentru saltul la pagină nouă.
-
----
-
-## 🛠️ Tehnologii și Instrumente Utilizate
-
-- **Limbaj:** C# 8.0
-- **Framework:** .NET Framework (Windows Forms)
-- **Bază de Date:** SQLite 
-- **Grafică:** System.Drawing (GDI+)
-- **IDE:** Visual Studio
-
----
+## 🚀 Posibilități de Dezvoltare (Roadmap)
+* **Securitate:** Implementarea unui modul de Login și restricționarea accesului la date sensibile.
+* **Performanță:** Introducerea procesării asincrone (`async/await`) pentru operațiunile de tip I/O.
+* **Arhitectură DB:** Normalizarea bazei de date prin crearea unui tabel separat pentru `Facultati` conectat prin Foreign Keys.
