@@ -1,30 +1,115 @@
-# Proiect Admitere Facultate
+# 🎓 Admitere Facultate
 
-## 📖 Descriere
-Acest proiect este dezvoltat în **C# WinForms**, conceput pentru a gestiona procesul de admitere la nivel universitar. Aplicația facilitează digitalizarea stocării datelor, automatizează calculul mediilor pe baza ponderilor și oferă instrumente integrate pentru generarea de statistici și rapoarte.
+Aplicație desktop dezvoltată în **C# / .NET Windows Forms** pentru
+gestionarea procesului de admitere universitară.
 
-## ✨ Funcționalități Principale
-* **Gestiune Candidați (CRUD):** Adăugarea, modificarea, vizualizarea și ștergerea candidaților.
-* **Calcul Automatizat:** Determinarea mediei finale pe baza notelor de BAC și Admitere, utilizând ponderi configurabile.
-* **Gestiune Facultăți:** Administrarea unui nomenclator de facultăți cu o capacitate limitată de locuri.
-* **Import & Export Date:** Suport complet pentru persistența datelor în formate multiple: `.txt`, `.dat`, `.xml`.
-* **Reprezentare Grafică:** Generarea de grafice cu bare (vectorial, via GDI+) pentru a ilustra distribuția candidaților pe facultăți.
-* **Imprimare & Paginare:** Funcție de printare cu previzualizare și gestionare automată a paginării.
-* **Evidențiere Status:** Formatare condiționată în interfață (Admis/Respins) accesibilă prin meniu contextual.
+Aplicația permite administrarea candidaților, calcularea automată a
+mediei de admitere, persistența datelor în SQLite, import/export,
+generarea de statistici și imprimarea rapoartelor.
 
-## 🛠️ Tehnologii și Concepte Utilizate
-* **Limbaj & Framework:** C#, .NET Windows Forms
-* **Bază de date:** SQLite
-* **Grafică:** GDI+ (`System.Drawing`)
-* **Serializare:** `XmlSerializer`, `BinaryFormatter`
-* **Concepte OOP Implementate:** Clase abstracte, moștenire, încapsulare (Business Logic), interfețe (`ICloneable`, `IComparable`, `IExportabil`), supraîncărcarea operatorilor, indexatori.
+## 🖥️ Preview
 
-## 🏛️ Arhitectură și Design
-* **Validare Date & Data Binding:** Legare reactivă a datelor (`DataSourceUpdateMode.OnValidation`) și afișare erori prin `ErrorProvider`.
-* **Formulare Reutilizabile:** Optimizare cod (DRY) pentru instanțierea dinamică a operațiunilor de Adăugare/Modificare.
-* **Securitate Bază de Date:** Operațiuni SQL executate exclusiv prin comenzi parametrizate.
+![Fereastra principală](Documentatie/fereastraprincipala.png)
 
-## 🚀 Posibilități de Dezvoltare (Roadmap)
-* **Securitate:** Implementarea unui modul de Login și restricționarea accesului la date sensibile.
-* **Performanță:** Introducerea procesării asincrone (`async/await`) pentru operațiunile de tip I/O.
-* **Arhitectură DB:** Normalizarea bazei de date prin crearea unui tabel separat pentru `Facultati` conectat prin Foreign Keys.
+## ✨ Funcționalități
+
+- CRUD complet pentru candidați
+- Calcul automat al mediei de admitere
+- Administrarea facultăților și a numărului de locuri
+- Filtrare și sortare candidați
+- Evidențiere vizuală Admis / Respins
+- Persistență SQLite
+- Import / Export TXT, XML și Binary
+- Grafice generate cu GDI+
+- Print Preview și imprimare cu paginare
+- Validarea datelor cu ErrorProvider
+- Data Binding
+
+## 🧑‍🎓 Gestionarea candidaților
+
+Candidații pot fi adăugați și modificați printr-un formular dedicat.
+
+![Formular candidat](Documentatie/formCandidat.png)
+
+Datele introduse sunt validate înainte de salvare.
+
+![Validare candidat](Documentatie/candidaterr.png)
+
+## 📊 Statistici
+
+Aplicația poate genera un grafic cu distribuția candidaților
+pe facultăți folosind GDI+.
+
+![Grafic](Documentatie/grafic.png)
+
+## 🗄️ Baza de date
+
+Datele sunt persistate într-o bază de date **SQLite**.
+
+Operațiile CRUD folosesc query-uri parametrizate.
+
+![SQLite Database](Documentatie/admiteredb.png)
+
+## 🏗️ Arhitectură OOP
+
+Proiectul utilizează:
+
+- clase abstracte și moștenire
+- încapsulare
+- `ICloneable`
+- `IComparable`
+- interfață proprie `IExportabil`
+- operator overloading
+- indexatori
+- colecții generice
+
+![Diagrama claselor](Documentatie/diagramaClase.png)
+
+## 💾 Import / Export
+
+Aplicația suportă:
+
+- TXT
+- XML
+- Binary (`.dat`)
+- SQLite
+
+![XML](Documentatie/xml.png)
+
+## 🖨️ Printing
+
+Lista candidaților poate fi previzualizată și imprimată,
+cu suport pentru paginare automată.
+
+![Print Preview](Documentatie/print.png)
+
+## 🛠️ Tehnologii
+
+| Tehnologie | Utilizare |
+|---|---|
+| C# | Limbaj principal |
+| .NET WinForms | Interfață desktop |
+| SQLite | Persistența datelor |
+| System.Drawing / GDI+ | Grafice |
+| XmlSerializer | Serializare XML |
+| Data Binding | Sincronizarea UI-model |
+
+## 📚 Documentație
+
+Documentația tehnică detaliată a proiectului se află în
+folderul `Documentatie`.
+
+
+## 🚀 Posibile îmbunătățiri
+
+- sistem de autentificare
+- hashing pentru parole
+- operații asincrone cu `async/await`
+- normalizarea bazei de date
+- tabel separat pentru facultăți și relații Foreign Key---
+
+## 👤 Autor
+
+**Zinca Mihai Cristian**
+
+Proiect realizat în cadrul disciplinei **Programarea Aplicațiilor Windows (PAW)**, utilizând **C# și .NET Windows Forms**.
